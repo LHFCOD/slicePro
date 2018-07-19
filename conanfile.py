@@ -14,11 +14,11 @@ class SliceConan(ConanFile):
 
     def source(self):
         self.run("git clone git@github.com:LHFCOD/sliceapi.git")
-        self.run("cd sliceapi && git checkout static_shared")
+#        self.run("cd sliceapi && git checkout static_shared")
         # This small hack might be useful to guarantee proper /MT /MD linkage
         # in MSVC if the packaged project doesn't have variables to set it
         # properly
-        tools.replace_in_file("sliceapi/CMakeLists.txt", "PROJECT(MyHello)",
+        tools.replace_in_file("sliceapi/CMakeLists.txt", "PROJECT(sliceapi)",
                               '''PROJECT(MyHello)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()''')
